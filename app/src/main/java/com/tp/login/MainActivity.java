@@ -1,3 +1,7 @@
+/**********
+ * author: Tanvi@
+ * description: The application opens a logged in activity with logout button
+ **********/
 package com.tp.login;
 
 import android.content.Intent;

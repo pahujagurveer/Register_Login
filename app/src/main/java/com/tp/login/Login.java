@@ -1,11 +1,12 @@
+/**********
+ * author: Tanvi@
+ * description: Login Activity
+ **********/
 package com.tp.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -14,14 +15,15 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
-    DatabaseHelper helper;
+    DatabaseHelper helper=new DatabaseHelper(this);
     Button login_btn;
-    EditText Username;
-    EditText password;
+    EditText UserName;
+    EditText Password;
     TextView Register_link;
     //UserLocalStore userLocalStore;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -30,41 +32,36 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         login_btn.setOnClickListener(this);
         Register_link.setOnClickListener(this);
-       // userLocalStore=new UserLocalStore(this);
-
 
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId())
-        {
-            case R.id.login_btn:
-                Username=(EditText) findViewById(R.id.Username);
-                password=(EditText) findViewById(R.id.password);
+        if(v.getId()==R.id.login_btn) {
 
-                String uname=Username.getText().toString();
-                String pass=password.getText().toString();
+            UserName = (EditText) findViewById(R.id.ET_Username);
+            Password = (EditText) findViewById(R.id.ET_password);
 
-                String password=helper.searchpass(pass);
-                if(pass.equals(password))
-                {
-                    Intent intent=new Intent(this,MainActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast pwd=Toast.makeText(Login.this, "Username or Password don't match",Toast.LENGTH_SHORT);
-                    pwd.show();
-                }
-                break;
-            case R.id.Register_link:
+            String uname = UserName.getText().toString();
+            String pass = Password.getText().toString();
+
+            String pwd = helper.searchpass(uname);
+            if (pass.equals(pwd))
+            {
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
+            }
+            else
+            {
+                Toast pwd1 = Toast.makeText(Login.this, "Username or Password don't match", Toast.LENGTH_SHORT);
+                pwd1.show();
+            }
+        }
+
+            if(v.getId()== R.id.Register_link)
+            {
                 Intent intent=new Intent(this,Register.class);
                 startActivity(intent);
-
-
-
-                break;
-        }
+            }
     }
 }

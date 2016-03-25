@@ -1,11 +1,13 @@
+/**********
+ * author: Tanvi@
+ * description: Getter and setters for Register and Login
+ **********/
+
 package com.tp.login;
 
 public class Contact {
 
     String name,Uname,pass,email;
-
-
-
     public void setName(String name)
     {
         this.name=name;
