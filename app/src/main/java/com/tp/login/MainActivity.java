@@ -1,6 +1,6 @@
 /**********
  * author: Tanvi@
- * description: The application opens a logged in activity with logout button
+ * description: The application opens a logged in activity with logout button.
  **********/
 package com.tp.login;
 
